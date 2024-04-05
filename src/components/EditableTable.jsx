@@ -14,8 +14,8 @@ import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
 
 function EditableTable() {
   const [data, setData] = useState([
-    { id: 1, lastName: '山田', firstName: '太郎', memo: 'メモ内容1' },
-    { id: 2, lastName: '佐藤', firstName: '次郎', memo: 'メモ内容2' },
+    { id: 1, lastName: 'あ', firstName: '太郎', memo: 'メモ内容1' },
+    { id: 2, lastName: 'う', firstName: '次郎', memo: 'メモ内容2' },
   ]);
   const [newLastName, setNewLastName] = useState('');
   const [newFirstName, setNewFirstName] = useState('');
@@ -45,9 +45,6 @@ function EditableTable() {
     setData(newData);
   };
 
-  const handleRemoveRow = id => {
-    setData(data.filter(item => item.id !== id));
-  };
 
   return (
     <>
@@ -111,13 +108,7 @@ function EditableTable() {
                   onChange={e => handleInputChange(e, row.id, 'memo')}
                 />
               </Td>
-              <Td>
-                <IconButton
-                  aria-label="行を削除"
-                  icon={<DeleteIcon />}
-                  onClick={() => handleRemoveRow(row.id)}
-                />
-              </Td>
+              
             </Tr>
           ))}
         </Tbody>
