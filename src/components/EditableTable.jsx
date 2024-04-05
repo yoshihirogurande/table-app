@@ -14,7 +14,7 @@ import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
 
 function EditableTable() {
   const [data, setData] = useState([
-    { id: 1, lastName: '山田', firstName: '太郎', memo: 'メモ内容1' },
+    { id: 1, lastName: 'プル', firstName: '太郎', memo: 'メモ内容1' },
     { id: 2, lastName: '佐藤', firstName: '次郎', memo: 'メモ内容2' },
   ]);
   const [newLastName, setNewLastName] = useState('');
