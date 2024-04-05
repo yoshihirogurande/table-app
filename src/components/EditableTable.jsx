@@ -45,9 +45,6 @@ function EditableTable() {
     setData(newData);
   };
 
-  const handleRemoveRow = id => {
-    setData(data.filter(item => item.id !== id));
-  };
 
   return (
     <>
@@ -111,13 +108,7 @@ function EditableTable() {
                   onChange={e => handleInputChange(e, row.id, 'memo')}
                 />
               </Td>
-              <Td>
-                <IconButton
-                  aria-label="行を削除"
-                  icon={<DeleteIcon />}
-                  onClick={() => handleRemoveRow(row.id)}
-                />
-              </Td>
+              
             </Tr>
           ))}
         </Tbody>
