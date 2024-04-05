@@ -13,9 +13,11 @@ import {
 import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
 
 function EditableTable() {
+  // 変数dataにユーザー情報を格納する
   const [data, setData] = useState([
-    { id: 1, lastName: '山田', firstName: '太郎', memo: 'メモ内容1' },
-    { id: 2, lastName: '佐藤', firstName: '次郎', memo: 'メモ内容2' },
+    // ユーザー一覧
+    { id: 1, lastName: '前田', firstName: '亮太', memo: 'メモ内容1' },
+    { id: 2, lastName: '藤田', firstName: '佳宏', memo: 'メモ内容2' },
   ]);
   const [newLastName, setNewLastName] = useState('');
   const [newFirstName, setNewFirstName] = useState('');
