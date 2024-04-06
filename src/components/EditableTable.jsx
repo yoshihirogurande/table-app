@@ -21,19 +21,6 @@ function EditableTable() {
   const [newFirstName, setNewFirstName] = useState('');
   const [newMemo, setNewMemo] = useState('');
 
-  const handleAddRow = () => {
-    const newId = data.length > 0 ? Math.max(...data.map(d => d.id)) + 1 : 1;
-    const newRow = {
-      id: newId,
-      lastName: newLastName,
-      firstName: newFirstName,
-      memo: newMemo,
-    };
-    setData([newRow, ...data]);
-    setNewLastName('');
-    setNewFirstName('');
-    setNewMemo('');
-  };
 
   const handleInputChange = (e, id, fieldName) => {
     const newData = data.map(item => {
@@ -62,34 +49,6 @@ function EditableTable() {
         </Thead>
         <Tbody>
           <Tr>
-            <Td>
-              <Input
-                placeholder="姓"
-                value={newLastName}
-                onChange={e => setNewLastName(e.target.value)}
-              />
-            </Td>
-            <Td>
-              <Input
-                placeholder="名"
-                value={newFirstName}
-                onChange={e => setNewFirstName(e.target.value)}
-              />
-            </Td>
-            <Td>
-              <Input
-                placeholder="メモ"
-                value={newMemo}
-                onChange={e => setNewMemo(e.target.value)}
-              />
-            </Td>
-            <Td>
-              <IconButton
-                aria-label="追加"
-                icon={<AddIcon />}
-                onClick={handleAddRow}
-              />
-            </Td>
           </Tr>
           {data.map(row => (
             <Tr key={row.id}>
