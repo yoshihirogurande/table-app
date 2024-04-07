@@ -62,6 +62,14 @@ function EditableTable() {
         </Thead>
         <Tbody>
           <Tr>
+          <Td>
+              <IconButton
+                aria-label="追加"
+                icon={<AddIcon />}
+                onClick={handleAddRow}
+              />
+            </Td>
+
             <Td>
               <Input
                 placeholder="姓"
@@ -83,16 +91,16 @@ function EditableTable() {
                 onChange={e => setNewMemo(e.target.value)}
               />
             </Td>
-            <Td>
-              <IconButton
-                aria-label="追加"
-                icon={<AddIcon />}
-                onClick={handleAddRow}
-              />
-            </Td>
           </Tr>
           {data.map(row => (
             <Tr key={row.id}>
+              <Td>
+                <IconButton
+                  aria-label="行を削除"
+                  icon={<DeleteIcon />}
+                  onClick={() => handleRemoveRow(row.id)}
+                />
+              </Td>
               <Td>
                 <Input
                   value={row.lastName}
@@ -111,13 +119,7 @@ function EditableTable() {
                   onChange={e => handleInputChange(e, row.id, 'memo')}
                 />
               </Td>
-              <Td>
-                <IconButton
-                  aria-label="行を削除"
-                  icon={<DeleteIcon />}
-                  onClick={() => handleRemoveRow(row.id)}
-                />
-              </Td>
+              
             </Tr>
           ))}
         </Tbody>
