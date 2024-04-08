@@ -9,32 +9,35 @@ import {
   Input,
   IconButton,
 } from '@chakra-ui/react';
-
-import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
-
+import { AddIcon, DeleteIcon,RepeatClockIcon } from '@chakra-ui/icons';
 function EditableTable() {
-  const [data, setData] = useState([
+  // dataの中に配列を格納その中にオブジェクト形式のデータが二つ
+
+  let initialData = [
     { id: 1, lastName: '山田', firstName: '太郎', memo: 'メモ内容1' },
     { id: 2, lastName: '佐藤', firstName: '次郎', memo: 'メモ内容2' },
-  ]);
+  ]
+  const [data, setData] = useState(initialData);
   const [newLastName, setNewLastName] = useState('');
   const [newFirstName, setNewFirstName] = useState('');
   const [newMemo, setNewMemo] = useState('');
-
   const handleAddRow = () => {
+    // データの1番大きいidに１プラスしてnewIdに代入
     const newId = data.length > 0 ? Math.max(...data.map(d => d.id)) + 1 : 1;
     const newRow = {
+      // 初期値を設定
       id: newId,
       lastName: newLastName,
       firstName: newFirstName,
       memo: newMemo,
     };
+    // セットするもの
     setData([newRow, ...data]);
     setNewLastName('');
     setNewFirstName('');
     setNewMemo('');
   };
-
+// ？？？
   const handleInputChange = (e, id, fieldName) => {
     const newData = data.map(item => {
       if (item.id === id) {
@@ -44,11 +47,16 @@ function EditableTable() {
     });
     setData(newData);
   };
-
+// 名前を削除する関数
   const handleRemoveRow = id => {
+    // id=2 item＝
     setData(data.filter(item => item.id !== id));
   };
+  // 初期値に戻す関数の予定
+  const undoSato = ()=>{
 
+    setData(initialData);
+  }
   return (
     <>
       <Table variant="simple">
@@ -116,7 +124,15 @@ function EditableTable() {
                   aria-label="行を削除"
                   icon={<DeleteIcon />}
                   onClick={() => handleRemoveRow(row.id)}
-                />
+                  />
+              </Td>
+              <Td>
+                {/* 初期値に戻すボタン予定 */}
+              <IconButton 
+              icon={<RepeatClockIcon/>}
+              onClick={()=>undoSato()
+              }
+              >戻す</IconButton>
               </Td>
             </Tr>
           ))}
