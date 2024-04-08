@@ -25,19 +25,17 @@ function EditableTable() {
     // データの1番大きいidに１プラスしてnewIdに代入
     const newId = data.length > 0 ? Math.max(...data.map(d => d.id)) + 1 : 1;
     const newRow = {
-      // 初期値を設定
       id: newId,
       lastName: newLastName,
       firstName: newFirstName,
       memo: newMemo,
     };
-    // セットするもの
+    // オブジェクトnewRowとオブジェクトに変換した配列dataを順番に出力
     setData([newRow, ...data]);
     setNewLastName('');
     setNewFirstName('');
     setNewMemo('');
   };
-// ？？？
   const handleInputChange = (e, id, fieldName) => {
     const newData = data.map(item => {
       if (item.id === id) {
@@ -49,11 +47,10 @@ function EditableTable() {
   };
 // 名前を削除する関数
   const handleRemoveRow = id => {
-    // id=2 item＝
     setData(data.filter(item => item.id !== id));
   };
   // 初期値に戻す関数の予定
-  const undoSato = ()=>{
+  const initialValue = ()=>{
 
     setData(initialData);
   }
@@ -127,10 +124,9 @@ function EditableTable() {
                   />
               </Td>
               <Td>
-                {/* 初期値に戻すボタン予定 */}
               <IconButton 
               icon={<RepeatClockIcon/>}
-              onClick={()=>undoSato()
+              onClick={()=>initialValue()
               }
               >戻す</IconButton>
               </Td>
