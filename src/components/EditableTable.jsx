@@ -49,7 +49,6 @@ function EditableTable() {
   const handleRemoveRow = id => {
     setData(data.filter(item => item.id !== id));
   };
-  // 初期値に戻す関数の予定
   const initialValue = ()=>{
 
     setData(initialData);
