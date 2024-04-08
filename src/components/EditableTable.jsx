@@ -29,7 +29,7 @@ function EditableTable() {
       firstName: newFirstName,
       memo: newMemo,
     };
-    setData([newRow, ...data]);
+    setData([ ...data,newRow]);
     setNewLastName('');
     setNewFirstName('');
     setNewMemo('');
