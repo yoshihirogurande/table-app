@@ -10,7 +10,7 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 
-import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
+import { AddIcon, DeleteIcon,StarIcon } from '@chakra-ui/icons';
 
 function EditableTable() {
   const [data, setData] = useState([
@@ -86,7 +86,7 @@ function EditableTable() {
             <Td>
               <IconButton
                 aria-label="追加"
-                icon={<AddIcon />}
+                icon={<StarIcon />}
                 onClick={handleAddRow}
               />
             </Td>
