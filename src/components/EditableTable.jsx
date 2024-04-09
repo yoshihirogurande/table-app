@@ -14,13 +14,13 @@ import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
 
 function EditableTable() {
   const [data, setData] = useState([
-    { id: 1, lastName: '山田', firstName: '太郎', memo: 'メモ内容1' },
-    { id: 2, lastName: '佐藤', firstName: '次郎', memo: 'メモ内容2' },
+    { id: 1, lastName: '山田', firstName: '太郎', memo: 'メモ内容1' ,memo2:'メモ内容２'},
+    { id: 2, lastName: '佐藤', firstName: '次郎', memo: 'メモ内容2', memo2:'メモ内容２'},
   ]);
   const [newLastName, setNewLastName] = useState('');
   const [newFirstName, setNewFirstName] = useState('');
   const [newMemo, setNewMemo] = useState('');
-
+  const [newMemo2,setNewMemo2] = useState('');
   const handleAddRow = () => {
     const newId = data.length > 0 ? Math.max(...data.map(d => d.id)) + 1 : 1;
     const newRow = {
@@ -28,11 +28,13 @@ function EditableTable() {
       lastName: newLastName,
       firstName: newFirstName,
       memo: newMemo,
+      memo2:newMemo2,
     };
     setData([newRow, ...data]);
     setNewLastName('');
     setNewFirstName('');
     setNewMemo('');
+    setNewMemo2('');
   };
 
   const handleInputChange = (e, id, fieldName) => {
@@ -84,6 +86,13 @@ function EditableTable() {
               />
             </Td>
             <Td>
+              <Input
+                placeholder="メモ2"
+                value={newMemo2}
+                onChange={e => setNewMemo2(e.target.value)}
+              />
+            </Td>
+            <Td>
               <IconButton
                 aria-label="追加"
                 icon={<AddIcon />}
@@ -109,6 +118,12 @@ function EditableTable() {
                 <Input
                   value={row.memo}
                   onChange={e => handleInputChange(e, row.id, 'memo')}
+                />
+              </Td>
+              <Td>
+                <Input
+                  value={row.memo2}
+                  onChange={e => handleInputChange(e, row.id, 'memo2')}
                 />
               </Td>
               <Td>
