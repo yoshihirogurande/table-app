@@ -49,7 +49,7 @@ function EditableTable() {
   const handleRemoveRow = id => {
     setData(data.filter(item => item.id !== id));
   };
-  const initialValue = ()=>{
+  const handleInitialRows = ()=>{
 
     setData(initialData);
   }
@@ -125,7 +125,7 @@ function EditableTable() {
               <Td>
               <IconButton 
               icon={<RepeatClockIcon/>}
-              onClick={()=>initialValue()
+              onClick={()=>handleInitialRows()
               }
               >戻す</IconButton>
               </Td>
